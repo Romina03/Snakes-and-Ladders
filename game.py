@@ -56,17 +56,16 @@ print(f"\n{player1.name} vs {player2.name}\n")
 # Computer rolls the dice first then the user
 while True:
     number = roll()
-    print(f"Computer rolled {number}.")
-    player1.position = player1.position + number
+    check = player1.position + number
+    if check <= 100:
+        print(f"Computer rolled {number}.")
+        player1.position = check
 
     if player1.position in snake: 
         player1.position = snake[player1.position] 
 
     if player1.position in ladder:
         player1.position = ladder[player1.position]
-
-    if player1.position > 100:
-        player1.position = player1.position - number
 
     if player1.position == 100:
         print("\nComputer is the winner!!!!")
@@ -77,17 +76,16 @@ while True:
     enter = input("Press Enter to roll dice!\n")
     if enter == "":
         number = roll()
-        print(f"{player2.name} rolled {number}.")
-        player2.position = player2.position + number
+        check = player2.position + number
+        if check <= 100:
+            print(f"{player2.name} rolled {number}.")
+            player2.position = check
 
         if player2.position in snake: 
             player2.position = snake[player2.position] 
 
         if player2.position in ladder:
             player2.position = ladder[player2.position]
-
-        if player2.position > 100:
-            player2.position = player2.position - number
         
         if player2.position == 100:
             print(f"\n{player2.name} is the winner!!!!")
